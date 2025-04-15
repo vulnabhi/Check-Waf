@@ -45,7 +45,7 @@
     bash check_waf.sh wafw00f.json
     ```
 
-3. **You can compine `wafw00f` and `WAFBulkSorter` in one liner**
+3. **You can combine `wafw00f` and `WAFBulkSorter` in one liner**
    ```bash
    wafw00f -i domains.txt -f json -o wafw00f.json && bash check_waf.sh wafw00f.json
     ```

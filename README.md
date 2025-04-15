@@ -22,6 +22,7 @@
     ```bash
     git clone https://github.com/yourusername/WAFBulkSorter.git
     cd WAFBulkSorter
+    chmod +x WAFBulkSorter.sh
     ```
 
 2. **Ensure dependencies are installed:**
@@ -30,6 +31,11 @@
         sudo apt update
         sudo apt install jq
         ```
+
+4. **Move the script to a directory in your PATH** (optional):
+    ```bash
+    sudo mv WAFBulkSorter.sh /usr/local/bin/waf_bulk_sorter
+    ```
 
 ---
 
@@ -42,14 +48,18 @@
 
 2. **Run `WAFBulkSorter` to process the output:**
     ```bash
-    bash check_waf.sh wafw00f.json
+    bash WAFBulkSorter.sh wafw00f.json
     ```
 
-3. **You can combine `wafw00f` and `WAFBulkSorter` in one liner**
+3. **You can combine `wafw00f` and `WAFBulkSorter` in one line:**
    ```bash
-   wafw00f -i domains.txt -f json -o wafw00f.json && bash check_waf.sh wafw00f.json
+   wafw00f -i domains.txt -f json -o wafw00f.json && bash WAFBulkSorter.sh wafw00f.json
     ```
 
+4. **Optional: Specify an output directory using `-o` (optional):**
+    ```bash
+    bash WAFBulkSorter.sh wafw00f.json -o /path/to/output_directory
+    ```
 
    This will create:
    - `waf_domains.txt` — Domains with WAFs.
@@ -58,3 +68,24 @@
    - A summary of detected domains will be displayed in the terminal.
 
 ---
+
+## Command-line Options
+
+- **`-o output_directory`**: (Optional) Directory to save the result files. If not provided, the results will be saved in the current working directory.
+- **`-h`**: Display the help message with usage details.
+
+---
+
+## Example Output
+
+```bash
+✅ WAF Detection Summary (JSON)
+--------------------------------------
+🔐 WAF Detected      : 5
+🛡  No WAF Detected  : 3
+❌ Error Domains      : 2
+--------------------------------------
+📁 Output Files:
+   - /path/to/output_directory/waf_domains.txt
+   - /path/to/output_directory/nonwaf_domains.txt
+   - /path/to/output_directory/error_domains.txt

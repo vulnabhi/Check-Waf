@@ -34,7 +34,7 @@
 
 4. **Move the script to a directory in your PATH** (optional):
     ```bash
-    sudo mv WAFBulkSorter.sh /usr/local/bin/waf_bulk_sorter
+    sudo mv WAFBulkSorter.sh /usr/local/bin/WAFBulkSorter
     ```
 
 ---
